@@ -14,14 +14,14 @@ export async function generateMetadata(
     { params }: Props,
 ): Promise<Metadata> {
     const slug = params.slug
-    const blog = blogs.find(x => x.slug = slug)
+    const blog = blogs.find(x => x.slug === slug)
     return {
         title: blog!.title,
     }
 }
 
 const Blogs = ({ params }: { params: { slug: string } }) => {
-    const blog = blogs.find(x => x.slug = params.slug)
+    const blog = blogs.find(x => x.slug === params.slug)
     return (
         <div className=" container py-5">
             <div className="grid grid-cols-6 gap-3">

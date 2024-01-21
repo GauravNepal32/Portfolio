@@ -7,6 +7,10 @@ import Link from "next/link";
 import Cards from "@/components/cards";
 import { ModeToggle } from "@/components/ThemeToggler";
 export default function Home() {
+  const sortedBlogs = blogs.sort(function (a, b) {
+    return b.date.localeCompare(a.date);
+  });
+
   return (
     <main className="h-screen overflow-hidden mx-auto">
       <div className="grid h-screen grid-cols-2 space-x-5 py-4">
@@ -91,7 +95,7 @@ export default function Home() {
                 02/ Blogs
               </div>
               <div className="grid grid-cols-2 mt-4 space-x-4">
-                {blogs.map(x => (
+                {sortedBlogs.map(x => (
                   <Cards className={'min-h-[250px]'}>
                     <Link href={`/blog/${x.slug}`} className="flex flex-col h-full justify-between">
                     <div className="">
